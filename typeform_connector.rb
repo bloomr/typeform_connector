@@ -6,6 +6,7 @@ KEY = ENV['key']
 TYPEFORM_KEY = ENV['typeform_key']
 INSCRIPTION_API_URL = "https://api.typeform.com/v0/form/ZDAyNU?key=#{TYPEFORM_KEY}&completed=true&limit=10&offset="
 PARCOURS_API_URL    = "https://api.typeform.com/v0/form/gXeaxa?key=#{TYPEFORM_KEY}&completed=true&limit=10&offset="
+ACTUALLY_API_URL    = "https://api.typeform.com/v0/form/EZBixl?key=#{TYPEFORM_KEY}&completed=true&limit=10&offset="
 
 def build_user_from_answer(answer)
   {
@@ -46,6 +47,63 @@ def build_question_from_answer_and_hidden(answer, hidden)
               title: "Aujourd'hui, que diriez-vous à la personne que vous étiez quand vous aviez 15 ans ?",
               answer: answer["textarea_3023840"]
           }
+      ]
+  }
+end
+
+def build_actually_questions_from_answer(answer)
+  {
+      questions_attributes: [
+          {
+              identifier: "how_many_people_in_company",
+              title: "Combien y a-t-il de personnes dans la structure dans laquelle vous travaillez ?",
+              answer: answer["list_3211156_choice"]
+          }, {
+              identifier: "solo_vs_team",
+              title: "Au quotidien, vous travaillez plutôt seul(e) ou plutôt en équipe ?",
+              answer: answer["opinionscale_6974948"]
+          }, {
+              identifier: "who_do_you_work_with",
+              title: "Lors d'une journée typique, avec qui êtes-vous en relation ?",
+              answer: answer["textarea_7015191"]
+          }, {
+              identifier: "manual_or_intellectual",
+              title: "Votre métier est plutôt manuel ou plutôt cérébral ?",
+              answer: answer["opinionscale_6974950"]
+          }, {
+              identifier: "foreign_language_mandatory",
+              title: "Est-ce que la connaissance d'une langue étrangère est impérative pour exercer votre métier ?",
+              answer: answer["opinionscale_6975003"]
+          }, {
+              identifier: "always_on_the_road",
+              title: "Est-ce que vous vous déplacez souvent ?",
+              answer: answer["opinionscale_6975078"]
+          }, {
+              identifier: "inside_or_outside_work",
+              title: "Et vous travaillez plutôt à l'extérieur ou pas ?",
+              answer: answer["opinionscale_7015042"]
+          }, {
+              identifier: "self_time_management",
+              title: "Est-ce que vous gérez vous-même votre temps ?",
+              answer: answer["opinionscale_6975119"]
+          }, {
+              identifier: "qualification_required",
+              title: "Votre métier peut-il s'exercer sans qualification ?",
+              answer: answer["yesno_3211154"]
+          }, {
+              identifier: "typical_workday",
+              title: "Pour finir, pouvez-vous décrire le déroulement de votre journée type ?",
+              answer: answer["textarea_7015225"]
+          }, {
+              identifier: "how_fun_was_this_form",
+              title: "Diriez-vous que ce questionnaire a été une expérience plaisante ?",
+              answer: answer["opinionscale_3211160"]
+          }, {
+              identifier: "actually_something_to_add",
+              title: "Une chose à ajouter ?",
+              answer: answer["textarea_3211152"]
+          }
+
       ]
   }
 end
@@ -134,16 +192,27 @@ def build_ids_and_questions_from_jsons(jsons)
 end
 
 def build_questions_from_typeform
-  qs = build_ids_and_questions_from_jsons(retrieve_all_jsons_from_typeform(PARCOURS_API_URL))
-  puts qs.length
-  qs
+  build_ids_and_questions_from_jsons(retrieve_all_jsons_from_typeform(PARCOURS_API_URL))
 end
 
-def post_questions_from_typeform
-  build_questions_from_typeform().map { |q| puts post_user_questions(q[:questions], URL + "/" + q[:id], KEY) }
+def post_questions_from_typeform(ids_questions)
+  ids_questions.map { |q| puts post_user_questions(q[:questions], URL + "/" + q[:id], KEY) }
+end
+
+def build_actually_ids_questions_from_json(json)
+  json['responses'].map { |response| { id: response['hidden']['id'], questions: build_actually_questions_from_answer(response['answers'])}}
+end
+
+def build_actually_ids_questions_from_jsons(jsons)
+  jsons.map { |json| build_actually_ids_questions_from_json(json) }.flatten
+end
+
+def build_actually_questions_from_typeform
+  build_actually_ids_questions_from_jsons(retrieve_all_jsons_from_typeform(ACTUALLY_API_URL))
 end
 
 if __FILE__ == $0
   post_users_from_typeform
-  post_questions_from_typeform
+  post_questions_from_typeform(build_questions_from_typeform())
+  post_questions_from_typeform(build_actually_questions_from_typeform())
 end

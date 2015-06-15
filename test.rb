@@ -5,6 +5,7 @@ class Import_Test < Minitest::Test
 
   PARCOURS_JSON = JSON.parse(File.read 'parcours.json')
   INSCRIPTION_JSON = JSON.parse(File.read 'inscription.json')
+  ACTUALLY_JSON = JSON.parse(File.read 'actually.json')
 
   def test_extract_users_data
     user_data = extract_answers(INSCRIPTION_JSON)
@@ -59,4 +60,49 @@ class Import_Test < Minitest::Test
     assert_equal(2, ids_questions.length)
     assert_equal("23", ids_questions[0][:id])
   end
+
+  def test_build_actually_questions_from_json
+    ids_questions = build_actually_ids_questions_from_json(ACTUALLY_JSON)
+
+    assert_equal(2, ids_questions.length)
+    assert_equal("48", ids_questions[0][:id])
+
+    assert_equal('how_many_people_in_company', ids_questions[0][:questions][:questions_attributes][0][:identifier])
+    assert_equal('1 seule personne, moi ;-)', ids_questions[0][:questions][:questions_attributes][0][:answer])
+
+    assert_equal('solo_vs_team', ids_questions[0][:questions][:questions_attributes][1][:identifier])
+    assert_equal('3', ids_questions[0][:questions][:questions_attributes][1][:answer])
+
+    assert_equal('who_do_you_work_with', ids_questions[0][:questions][:questions_attributes][2][:identifier])
+    assert_equal('Clients, partenaires', ids_questions[0][:questions][:questions_attributes][2][:answer])
+
+    assert_equal('manual_or_intellectual', ids_questions[0][:questions][:questions_attributes][3][:identifier])
+    assert_equal('2', ids_questions[0][:questions][:questions_attributes][3][:answer])
+
+    assert_equal('foreign_language_mandatory', ids_questions[0][:questions][:questions_attributes][4][:identifier])
+    assert_equal('5', ids_questions[0][:questions][:questions_attributes][4][:answer])
+
+    assert_equal('always_on_the_road', ids_questions[0][:questions][:questions_attributes][5][:identifier])
+    assert_equal('3', ids_questions[0][:questions][:questions_attributes][5][:answer])
+
+    assert_equal('inside_or_outside_work', ids_questions[0][:questions][:questions_attributes][6][:identifier])
+    assert_equal('2', ids_questions[0][:questions][:questions_attributes][6][:answer])
+
+    assert_equal('self_time_management', ids_questions[0][:questions][:questions_attributes][7][:identifier])
+    assert_equal('4', ids_questions[0][:questions][:questions_attributes][7][:answer])
+
+    assert_equal('qualification_required', ids_questions[0][:questions][:questions_attributes][8][:identifier])
+    assert_equal('0', ids_questions[0][:questions][:questions_attributes][8][:answer])
+
+    assert_equal('typical_workday', ids_questions[0][:questions][:questions_attributes][9][:identifier])
+    assert_equal('Très difficile', ids_questions[0][:questions][:questions_attributes][9][:answer])
+
+    assert_equal('how_fun_was_this_form', ids_questions[0][:questions][:questions_attributes][10][:identifier])
+    assert_equal('3', ids_questions[0][:questions][:questions_attributes][10][:answer])
+
+    assert_equal('actually_something_to_add', ids_questions[0][:questions][:questions_attributes][11][:identifier])
+    assert_equal('Questions plus personnelles bienvenues :)', ids_questions[0][:questions][:questions_attributes][11][:answer])
+  end
+
+
 end

@@ -1,0 +1,140 @@
+{
+    "http_status": 200,
+    "stats": {
+        "responses": {
+            "showing": 10,
+            "total": 73,
+            "completed": 52
+        }
+    },
+    "questions": [
+        {
+            "id": "list_3211156_choice",
+            "question": "Combien y a-t-il de personnes dans la structure dans laquelle vous travaillez ?"
+        },
+        {
+            "id": "opinionscale_6974948",
+            "question": "Au quotidien, vous travaillez plutôt seul(e) ou plutôt en équipe ?"
+        },
+        {
+            "id": "textarea_7015191",
+            "question": "Lors d'une journée typique, avec qui êtes-vous en relation ?"
+        },
+        {
+            "id": "opinionscale_6974950",
+            "question": "Votre métier est plutôt manuel ou plutôt cérébral ?"
+        },
+        {
+            "id": "opinionscale_6975003",
+            "question": "Est-ce que la connaissance d'une langue étrangère est impérative pour exercer votre métier ?"
+        },
+        {
+            "id": "opinionscale_6975078",
+            "question": "Est-ce que vous vous déplacez souvent ?"
+        },
+        {
+            "id": "opinionscale_7015042",
+            "question": "Et vous travaillez plutôt à l'extérieur ou pas ?"
+        },
+        {
+            "id": "opinionscale_6975119",
+            "question": "Est-ce que vous gérez vous-même votre temps ?"
+        },
+        {
+            "id": "yesno_3211154",
+            "question": "Votre métier peut-il s'exercer sans qualification ?"
+        },
+        {
+            "id": "textarea_7015225",
+            "question": "Pour finir, pouvez-vous décrire le déroulement de votre journée type ?"
+        },
+        {
+            "id": "opinionscale_3211160",
+            "question": "Diriez-vous que ce questionnaire a été une expérience plaisante ?"
+        },
+        {
+            "id": "textarea_3211152",
+            "question": "Une chose à ajouter ?"
+        },
+        {
+            "id": "hidden_id",
+            "question": "id"
+        },
+        {
+            "id": "hidden_prenom",
+            "question": "prenom"
+        },
+        {
+            "id": "hidden_metier",
+            "question": "metier"
+        }
+    ],
+    "responses": [
+        {
+            "id": "6",
+            "completed": "1",
+            "token": "5cbd58427e78c31754f2eaed93063443",
+            "metadata": {
+                "browser": "default",
+                "platform": "other",
+                "date_land": "2015-05-28 12:05:08",
+                "date_submit": "2015-05-28 12:23:04",
+                "user_agent": "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36",
+                "referer": "",
+                "network_id": "702afebcd7a42f87e0f7f82ebc59c2ee86d70cc9"
+            },
+            "hidden": {
+                "id": "48",
+                "prenom": "Rémi",
+                "metier": "Designer UX, Consultant en innovation et Spécialiste web marketing"
+            },
+            "answers": {
+                "list_3211156_choice": "1 seule personne, moi ;-)",
+                "opinionscale_6974948": "3",
+                "textarea_7015191": "Clients, partenaires",
+                "opinionscale_6974950": "2",
+                "opinionscale_6975003": "5",
+                "opinionscale_6975078": "3",
+                "opinionscale_7015042": "2",
+                "opinionscale_6975119": "4",
+                "yesno_3211154": "0",
+                "textarea_7015225": "Très difficile",
+                "opinionscale_3211160": "3",
+                "textarea_3211152": "Questions plus personnelles bienvenues :)"
+            }
+        },
+        {
+            "id": "7",
+            "completed": "1",
+            "token": "4696c6feb7663c88d723bf64ada16b8d",
+            "metadata": {
+                "browser": "default",
+                "platform": "other",
+                "date_land": "2015-05-28 12:21:45",
+                "date_submit": "2015-05-28 12:23:29",
+                "user_agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36",
+                "referer": "",
+                "network_id": "277b937d053bb524216e8b20b4f47f36aedd148a"
+            },
+            "hidden": {
+                "id": "21",
+                "prenom": "Stéphane",
+                "metier": "Gérant de portefeuille"
+            },
+            "answers": {
+                "list_3211156_choice": "Entre 251 et 5000 personnes",
+                "opinionscale_6974948": "4",
+                "textarea_7015191": "Les clients, mon équipe, mes fournisseurs",
+                "opinionscale_6974950": "1",
+                "opinionscale_6975003": "5",
+                "opinionscale_6975078": "2",
+                "opinionscale_7015042": "1",
+                "opinionscale_6975119": "5",
+                "yesno_3211154": "0",
+                "textarea_7015225": "",
+                "opinionscale_3211160": "3",
+                "textarea_3211152": ""
+            }
+        }
+    ]
+}
