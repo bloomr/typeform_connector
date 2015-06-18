@@ -212,7 +212,7 @@ def build_actually_questions_from_typeform
 end
 
 if __FILE__ == $0
-  post_users_from_typeform
+  #post_users_from_typeform
   post_questions_from_typeform(build_questions_from_typeform())
   post_questions_from_typeform(build_actually_questions_from_typeform())
 end
