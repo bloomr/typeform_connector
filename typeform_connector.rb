@@ -8,8 +8,12 @@ INSCRIPTION_API_URL = "https://api.typeform.com/v0/form/ZDAyNU?key=#{TYPEFORM_KE
 PARCOURS_API_URL    = "https://api.typeform.com/v0/form/gXeaxa?key=#{TYPEFORM_KEY}&completed=true&limit=10&offset="
 ACTUALLY_API_URL    = "https://api.typeform.com/v0/form/EZBixl?key=#{TYPEFORM_KEY}&completed=true&limit=10&offset="
 
+def is_new_creation_form?(answer)
+  !answer["textfield_7635908"].nil?
+end
+
 def build_user_from_answer(answer)
-  {
+  user = {
     email:      answer["email_2760387"],
     first_name: answer["textfield_2760418"],
     job_title:  answer["textfield_2761813"],
@@ -26,6 +30,13 @@ def build_user_from_answer(answer)
       answer: answer["textarea_2759737"]
     }]
   }
+
+  if is_new_creation_form?(answer)
+    user[:first_name]   = answer["textfield_2759788"]
+    user[:keyword_list] = answer["textfield_7635908"]
+  end
+
+  user
 end
 
 def build_question_from_answer_and_hidden(answer, hidden)
@@ -212,7 +223,7 @@ def build_actually_questions_from_typeform
 end
 
 if __FILE__ == $0
-  #post_users_from_typeform
+  post_users_from_typeform
   post_questions_from_typeform(build_questions_from_typeform())
   post_questions_from_typeform(build_actually_questions_from_typeform())
 end

@@ -5,6 +5,7 @@ class Import_Test < Minitest::Test
 
   PARCOURS_JSON = JSON.parse(File.read 'parcours.json')
   INSCRIPTION_JSON = JSON.parse(File.read 'inscription.json')
+  NEW_INSCRIPTION_JSON = JSON.parse(File.read 'new_inscription.json')
   ACTUALLY_JSON = JSON.parse(File.read 'actually.json')
 
   def test_extract_users_data
@@ -25,6 +26,19 @@ class Import_Test < Minitest::Test
     assert_equal(2, users[0][:questions_attributes].length)
     assert_equal('Mon métier', users[0][:questions_attributes][0][:answer])
     assert_equal('propose à toute', users[0][:questions_attributes][1][:answer])
+  end
+
+  def test_build_users_from_new_inscription_json
+    users = build_users_from_json(NEW_INSCRIPTION_JSON)
+
+    assert_equal(10, users.length)
+    assert_equal('julie.pairault@hotmail.com', users[0][:email])
+    assert_equal('Julie', users[0][:first_name])
+    assert_equal('Directrice congrès et evenements en hotellerie de luxe', users[0][:job_title])
+    assert_equal('Organisation, minutie, contact, synergie, creativite ', users[0][:keyword_list])
+    assert_equal(2, users[0][:questions_attributes].length)
+    assert_equal('Je vends et organise des evenements', users[0][:questions_attributes][0][:answer])
+    assert_equal('J\'aime le contact avec le client', users[0][:questions_attributes][1][:answer])
   end
 
   def test_build_users_from_jsons
