@@ -68,15 +68,18 @@ def build_actually_questions_from_answer(answer)
           {
               identifier: "how_many_people_in_company",
               title: "Combien y a-t-il de personnes dans la structure dans laquelle vous travaillez ?",
-              answer: answer["list_3211156_choice"]
+              answer: answer["list_3211156_choice"],
+              published: true
           }, {
               identifier: "solo_vs_team",
               title: "Au quotidien, vous travaillez plutôt seul(e) ou plutôt en équipe ?",
-              answer: answer["opinionscale_6974948"]
+              answer: answer["opinionscale_6974948"],
+              published: true
           }, {
               identifier: "who_do_you_work_with",
               title: "Lors d'une journée typique, avec qui êtes-vous en relation ?",
-              answer: answer["textarea_7015191"]
+              answer: answer["textarea_7015191"],
+              published: true
           }, {
               identifier: "manual_or_intellectual",
               title: "Votre métier est plutôt manuel ou plutôt cérébral ?",
@@ -84,7 +87,8 @@ def build_actually_questions_from_answer(answer)
           }, {
               identifier: "foreign_language_mandatory",
               title: "Est-ce que la connaissance d'une langue étrangère est impérative pour exercer votre métier ?",
-              answer: answer["opinionscale_6975003"]
+              answer: answer["opinionscale_6975003"],
+              published: true
           }, {
               identifier: "always_on_the_road",
               title: "Est-ce que vous vous déplacez souvent ?",
@@ -92,11 +96,13 @@ def build_actually_questions_from_answer(answer)
           }, {
               identifier: "inside_or_outside_work",
               title: "Et vous travaillez plutôt à l'extérieur ou pas ?",
-              answer: answer["opinionscale_7015042"]
+              answer: answer["opinionscale_7015042"],
+              published: true
           }, {
               identifier: "self_time_management",
               title: "Est-ce que vous gérez vous-même votre temps ?",
-              answer: answer["opinionscale_6975119"]
+              answer: answer["opinionscale_6975119"],
+              published: true
           }, {
               identifier: "qualification_required",
               title: "Votre métier peut-il s'exercer sans qualification ?",

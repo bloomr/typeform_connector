@@ -83,6 +83,7 @@ class Import_Test < Minitest::Test
 
     assert_equal('how_many_people_in_company', ids_questions[0][:questions][:questions_attributes][0][:identifier])
     assert_equal('1 seule personne, moi ;-)', ids_questions[0][:questions][:questions_attributes][0][:answer])
+    assert_equal(true, ids_questions[0][:questions][:questions_attributes][0][:published])
 
     assert_equal('solo_vs_team', ids_questions[0][:questions][:questions_attributes][1][:identifier])
     assert_equal('3', ids_questions[0][:questions][:questions_attributes][1][:answer])
